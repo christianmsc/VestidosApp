@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VestidoService } from '../services/vestido.service';
 
 @Component({
   selector: 'app-list',
@@ -6,34 +7,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
-  private selectedItem: any;
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Vestido ' + i,
-        note: 'Confira o vestido #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  
+  public vestidos: any[];
+  public carregando: boolean;
+  
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
+
+  constructor(private vestidoService: VestidoService) { 
+    this.vestidos = [];
+    this.carregando = false;
   }
 
   ngOnInit() {
+    this.carregando = true;
+    this.vestidoService.getVestidos().subscribe((data: any) => {
+      data = JSON.parse(data._body);
+      this.vestidos = data.vestidos;
+      this.carregando = false;
+    }, err => {
+      this.carregando = false;
+      alert(err);
+    });
   }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
 }

@@ -9,19 +9,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+<div *ngIf="carregando" class="carregando">
+  <ion-spinner name="bubbles"></ion-spinner>
+</div>
+
+<ion-content *ngIf="!carregando">
+  <ion-card *ngFor="let vestido of vestidos">
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide *ngFor="let foto of vestido.fotos">
+        <img src="{{foto}}" />
+      </ion-slide>
+    </ion-slides>
+    <ion-card-header>
+      <ion-card-subtitle>{{vestido.preco}}</ion-card-subtitle>
+      <ion-card-title>{{vestido.nome}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{vestido.descricao}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
