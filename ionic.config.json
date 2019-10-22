@@ -1,5 +1,7 @@
 {
   "name": "VestidoApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
