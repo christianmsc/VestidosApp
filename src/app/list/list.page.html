@@ -14,6 +14,11 @@
 </div>
 
 <ion-content *ngIf="!carregando">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-card *ngFor="let vestido of vestidos">
     <ion-slides pager="true" [options]="slideOpts">
       <ion-slide *ngFor="let foto of vestido.fotos">
@@ -28,4 +33,14 @@
       {{vestido.descricao}}
     </ion-card-content>
   </ion-card>
+
+  <div *ngIf="acabaramVestidos" class="ion-text-center">
+    acabaram os vestidos =(
+  </div>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="carregando mais vestidos =)">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>
