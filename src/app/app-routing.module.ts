@@ -16,7 +16,9 @@ const routes: Routes = [
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' }
+  { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
+  { path: 'vestido-detalhes/:id', loadChildren: './vestido-detalhes/vestido-detalhes.module#VestidoDetalhesPageModule' }
+
 
 ];
 

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes do Vestido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngIf="vestido">
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide *ngFor="let foto of vestido.fotos">
+        <img src="{{foto}}" />
+      </ion-slide>
+    </ion-slides>
+    <ion-card-header>
+      <ion-card-subtitle>{{vestido.preco}}</ion-card-subtitle>
+      <ion-card-title>{{vestido.nome}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{vestido.descricao}}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

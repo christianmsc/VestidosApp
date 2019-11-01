@@ -12,8 +12,8 @@ export class VestidoService {
 
   constructor(public http: Http) { }
 
-  getVestidos(): Observable<any>{
-    return this.http.get(this.baseUrl + "Vestidos.ashx").pipe();
+  getVestidos(id?: number): Observable<any>{
+    return this.http.get(this.baseUrl + `Vestidos.ashx${id ? '?id=' + id : ''}`).pipe();
   }
 
   getVestidosPaginacao(offset = 0, results = 1): Observable<any>{

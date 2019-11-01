@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { VestidoService } from '../services/vestido.service';
-import { IonInfiniteScroll } from '@ionic/angular';
+import { IonInfiniteScroll, NavController } from '@ionic/angular';
+import { VestidoDetalhesPage } from '../vestido-detalhes/vestido-detalhes.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -23,7 +25,7 @@ export class ListPage implements OnInit {
     speed: 400
   };
 
-  constructor(private vestidoService: VestidoService) {
+  constructor(private vestidoService: VestidoService, private navCtrl: NavController) {
     this.vestidos = [];
     this.carregando = false;
   }
@@ -78,6 +80,10 @@ export class ListPage implements OnInit {
       }
       alert(err);
     });
+  }
+
+  abrirDetalhes(vestido){
+    this.navCtrl.navigateForward(`vestido-detalhes/${vestido.id}`);
   }
 
 }

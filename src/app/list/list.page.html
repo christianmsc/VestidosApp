@@ -19,7 +19,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let vestido of vestidos">
+  <ion-card *ngFor="let vestido of vestidos" block (click)="abrirDetalhes(vestido)">
     <ion-slides pager="true" [options]="slideOpts">
       <ion-slide *ngFor="let foto of vestido.fotos">
         <img src="{{foto}}" />
