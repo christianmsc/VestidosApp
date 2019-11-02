@@ -9,19 +9,24 @@
 
 <ion-content>
 
-  <ion-card *ngIf="vestido">
-    <ion-slides pager="true" [options]="slideOpts">
+  <div *ngIf="vestido">
+    <ion-slides pager="true" [options]="slideOpts" (click)="ampliarFotos(vestido.fotos)">
       <ion-slide *ngFor="let foto of vestido.fotos">
         <img src="{{foto}}" />
       </ion-slide>
     </ion-slides>
-    <ion-card-header>
-      <ion-card-subtitle>{{vestido.preco}}</ion-card-subtitle>
-      <ion-card-title>{{vestido.nome}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      {{vestido.descricao}}
-    </ion-card-content>
-  </ion-card>
+
+    <div class="card">
+      <div class="text">
+        <h1>{{vestido.nome}}</h1>
+        <h5>Tamanho {{vestido.tamanho}}</h5>
+        <h6>{{vestido.preco | currency: 'R$'}}</h6>
+        <p>{{vestido.descricao}}</p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div>
 
 </ion-content>

@@ -26,7 +26,7 @@
       </ion-slide>
     </ion-slides>
     <ion-card-header>
-      <ion-card-subtitle>{{vestido.preco}}</ion-card-subtitle>
+      <ion-card-subtitle>{{vestido.preco | currency: 'R$'}} - Tamanho {{vestido.tamanho}}</ion-card-subtitle>
       <ion-card-title>{{vestido.nome}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>

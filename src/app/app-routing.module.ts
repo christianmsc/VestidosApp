@@ -17,7 +17,8 @@ const routes: Routes = [
   },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
-  { path: 'vestido-detalhes/:id', loadChildren: './vestido-detalhes/vestido-detalhes.module#VestidoDetalhesPageModule' }
+  { path: 'vestido-detalhes/:id', loadChildren: './vestido-detalhes/vestido-detalhes.module#VestidoDetalhesPageModule' },  { path: 'img-full-modal', loadChildren: './img-full-modal/img-full-modal.module#ImgFullModalPageModule' }
+
 
 
 ];
