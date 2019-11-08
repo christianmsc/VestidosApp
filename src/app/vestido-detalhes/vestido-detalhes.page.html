@@ -10,7 +10,7 @@
 <ion-content>
 
   <div *ngIf="vestido">
-    <ion-slides pager="true" [options]="slideOpts" (click)="ampliarFotos(vestido.fotos)">
+    <ion-slides pager="true" (click)="ampliarFotos(vestido.fotos)">
       <ion-slide *ngFor="let foto of vestido.fotos">
         <img src="{{foto}}" />
       </ion-slide>
