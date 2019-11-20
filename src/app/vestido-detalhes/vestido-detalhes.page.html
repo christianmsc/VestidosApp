@@ -25,6 +25,28 @@
       </div>
     </div>
 
+    <div class="card">
+      <h6 class="card-title">Empresa fornecedora</h6>
+      <div class="card-info">
+        <img class="img-card" src="{{vestido.fotoEmpresa}}" />
+        <div class="text">
+          <h1>{{vestido.nomeEmpresa}}</h1>
+          <h5>Endereço: {{vestido.enderecoEmpresa}}</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" *ngIf="vestido.nomeUsuario">
+      <h6 class="card-title">Don@ do Vestido</h6>
+      <div class="card-info">
+        <img class="img-card" *ngIf="vestido.fotoUsuario" src="{{vestido.fotoUsuario}}" />
+        <img class="img-card" *ngIf="!vestido.fotoUsuario" src="../../assets/images/user-icon.png" />
+        <div class="text">
+          <h1>{{vestido.nomeUsuario}}</h1>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </ion-content>
