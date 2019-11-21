@@ -34,11 +34,11 @@
     </ion-card-content>
   </ion-card>
 
-  <div *ngIf="acabaramVestidos" class="ion-text-center">
-    acabaram os vestidos =(
+  <div *ngIf="acabaramVestidos" class="alert ion-text-center">
+    <p>acabaram os vestidos =(</p>
   </div>
 
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="carregando mais vestidos =)">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>

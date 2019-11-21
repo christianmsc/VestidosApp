@@ -4,6 +4,7 @@
     position: relative;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
+    margin-bottom: 10px;
   }
 
   .text {
@@ -14,6 +15,7 @@
     font-weight: 300;
     line-height: 22px;
     letter-spacing: .4px;
+    padding-bottom: 5px;
   }
   
   .text p {
@@ -28,12 +30,11 @@ ion-slides.md.slides-md.swiper-container.hydrated.swiper-container-initialized.s
   border-radius: 20px;
   max-width: 30vw;
   max-height: 20vh;
-  padding: 10px;
+  padding: 3px 12px 0px 0px;
 }
 
 .card-title{
   margin-bottom: 0;
-  margin-left: 10px;
 }
 
 .card-info{

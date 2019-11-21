@@ -16,7 +16,7 @@ export class ListPage implements OnInit {
   public refresher;
   public isRefreshing: boolean = false;
   public offset: number = 0;
-  public results: number = 10;
+  public results: number = 2;
   public infiniteScroll;
   public acabaramVestidos: boolean = false;
 
