@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-subtitle>Dados Pessoais</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input #nome></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">CPF</ion-label>
+          <ion-input type="number" #cpf></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Nascimento</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" #dataNascimento></ion-datetime>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Telefone</ion-label>
+          <ion-input type="number" #telefone></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input type="email" #email></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input type="password" #senha></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding ion-text-center">
+        Selecionar Foto... 
+        <ion-button (click)="selecionarFoto()"> 
+          <ion-icon name="camera"></ion-icon>
+        </ion-button>
+      </div>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-subtitle>Endereço</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Rua</ion-label>
+          <ion-input #rua></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Número</ion-label>
+          <ion-input type="number" #numero></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Complemento</ion-label>
+          <ion-input #complemento></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Bairro</ion-label>
+          <ion-input #bairro></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Cidade</ion-label>
+          <ion-input #cidade></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Estado</ion-label>
+          <ion-input #estado></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">CEP</ion-label>
+          <ion-input #cep></ion-input>
+        </ion-item>
+      </div>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <div class="ion-padding">
+    <ion-button expand="block" type="submit" class="ion-no-margin"
+      (click)="cadastrar(nome, cpf, dataNascimento, telefone, email, senha, rua, numero, complemento, bairro, cidade, estado, cep)">
+      Cadastrar
+    </ion-button>
+  </div>
+
+</ion-content>

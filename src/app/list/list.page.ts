@@ -78,7 +78,7 @@ export class ListPage implements OnInit {
         this.refresher.target.complete();
         this.isRefreshing = false;
       }
-      alert(err);
+      alert('não consegui trazer os vestidos =´(');
     });
   }
 

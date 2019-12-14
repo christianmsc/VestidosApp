@@ -1,25 +1,49 @@
-<ion-grid>
-    <ion-row justify-content-center>
-      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-        <div text-center>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+        <div class="ion-text-center">
           <h4>amei seu vestido!</h4>
         </div>
-        <div padding>
-            <ion-item>
-                <ion-label position="floating">Login</ion-label>
-                <ion-input #login></ion-input>
-              </ion-item>
-  
-          <ion-item>
-              <ion-label position="floating">Senha</ion-label>
-              <ion-input type="password" #senha></ion-input>
-            </ion-item>
-        </div>
-  
         <div class="ion-padding">
-            <ion-button expand="block" type="submit" class="ion-no-margin" (click)="logar(login.value, senha.value)">
-              Entrar</ion-button>
-          </div>
+          <ion-item>
+            <ion-label position="floating">Login</ion-label>
+            <ion-input #login></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Senha</ion-label>
+            <ion-input type="password" #senha></ion-input>
+          </ion-item>
+        </div>
+
+        <div class="ion-padding">
+          <ion-button expand="block" type="submit" class="ion-no-margin" (click)="logar(login.value, senha.value)">
+            Entrar
+          </ion-button>
+        </div>
+
+        <div class="ion-padding">
+          Não tem conta?
+          <ion-button expand="block" class="ion-no-margin" (click)="cadastrar()">
+            Cadastrar
+          </ion-button>
+        </div>
+
       </ion-col>
     </ion-row>
   </ion-grid>
+
+</ion-content>

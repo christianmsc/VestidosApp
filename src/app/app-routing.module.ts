@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },  { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
   { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
   { path: 'aluguel', loadChildren: './aluguel/aluguel.module#AluguelPageModule' },
-  { path: 'notificacoes', loadChildren: './notificacoes/notificacoes.module#NotificacoesPageModule' }
+  { path: 'notificacoes', loadChildren: './notificacoes/notificacoes.module#NotificacoesPageModule' },
+  { path: 'cadastro-usuario', loadChildren: './cadastro-usuario/cadastro-usuario.module#CadastroUsuarioPageModule' }
 
 
 
