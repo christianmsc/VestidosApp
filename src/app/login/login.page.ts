@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,16 +10,27 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private navCtrl: NavController, private authService: AuthenticationService) { }
+  constructor(private navCtrl: NavController, private authService: AuthenticationService, private loginService: LoginService) { }
 
   ngOnInit() {
   }
 
   logar(login, senha) {
-    debugger;
-    if (login === 'admin' && senha === '123') {
-      this.authService.login();
-    }
+    this.loginService.login(login, senha).subscribe((data: any) => {
+
+      data = JSON.parse(data._body);
+
+      if (data.sucesso) {
+        this.authService.login();
+        this.navCtrl.navigateRoot('');
+      }
+      else {
+        alert('login inválido =(');
+      }
+    }, err => {
+      alert('não consegui verificar seu login =´(');
+    });
+
   }
 
   cadastrar() {

@@ -21,7 +21,7 @@ export class CadastrarUsuarioService {
   constructor(public http: Http) { }
 
   postUsuario(usuario: NovoUsuario): Observable<any>{
-    const data: FormData= new FormData();
+    const data: FormData = new FormData();
     data.append("jsonUsuario", JSON.stringify(usuario));
     return this.http.post(this.baseUrl + `CadastrarUsuario.ashx`, data).pipe();
   }

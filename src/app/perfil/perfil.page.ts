@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfil',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilPage implements OnInit {
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService, private navController: NavController) { }
 
   ngOnInit() {
   }
+
+  sair(){
+    this.authenticationService.logout();
+    this.navController.navigateRoot('');
+  }
+
 
 }
