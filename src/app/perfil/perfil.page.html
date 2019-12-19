@@ -7,6 +7,35 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-text-center">
-  <ion-button color="danger" (click)="sair()"><ion-icon name="log-out"></ion-icon> Sair</ion-button>
+<ion-content class="ion-padding ion-text-center">
+
+  <div *ngIf="usuario">
+
+    <ion-text color="primary" class="ion-text-center ion-padding">
+      <img *ngIf="usuario.foto" [src]="usuario.foto" width="40%" class="foto-usuario" />
+      <img *ngIf="!usuario.foto" src="../../assets/userNoPhoto.png" width="40%" class="foto-usuario" />
+      <h2>{{usuario.nome}}</h2>
+    </ion-text>
+
+    <ion-text color="primary">
+      <h6><b>CPF: </b>{{usuario.cpf}}</h6>
+    </ion-text>
+
+    <ion-text color="primary">
+      <h6><b>Nascimento: </b>{{usuario.dataNascimento | date:'dd/MM/yyyy'}}</h6>
+    </ion-text>
+
+    <ion-text color="primary">
+      <h6><b>Telefone: </b>{{usuario.telefone}}</h6>
+    </ion-text>
+
+    <ion-text color="primary">
+      <h6><b>E-mail: </b>{{usuario.email}}</h6>
+    </ion-text>
+
+  </div>
+
+  <ion-button color="danger" (click)="sair()" class="ion-padding">
+    <ion-icon name="log-out"></ion-icon> Sair
+  </ion-button>
 </ion-content>

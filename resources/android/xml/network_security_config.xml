@@ -4,5 +4,6 @@
         <domain includeSubdomains="true">localhost</domain>
         <domain includeSubdomains="true">ameiseuvestido.gear.host</domain>
         <domain includeSubdomains="true">ameiseuvestido2.gear.host</domain>
+        <domain includeSubdomains="true">asv-imgs.gear.host</domain>
     </domain-config>
 </network-security-config>

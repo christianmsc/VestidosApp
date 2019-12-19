@@ -5,17 +5,18 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from  '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ImgFullModalPageModule } from './img-full-modal/img-full-modal.module';
-import {LOCALE_ID} from '@angular/core';
+import { LOCALE_ID } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -34,7 +35,8 @@ registerLocaleData(localePt, 'pt-BR');
   providers: [
     StatusBar,
     SplashScreen,
-    ImagePicker,
+    Camera,
+    File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: LOCALE_ID,
@@ -43,4 +45,4 @@ registerLocaleData(localePt, 'pt-BR');
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

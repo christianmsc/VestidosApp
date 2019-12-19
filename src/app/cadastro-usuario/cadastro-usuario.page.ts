@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/file/ngx';
 import { NovoUsuario } from '../models/NovoUsuario';
 import { CadastrarUsuarioService } from '../services/cadastrar-usuario.service';
-import { NavController } from '@ionic/angular';
+import { NavController, ActionSheetController } from '@ionic/angular';
+import { FotoUploadService } from '../services/foto-upload.service';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -11,40 +13,71 @@ import { NavController } from '@ionic/angular';
 })
 export class CadastroUsuarioPage implements OnInit {
 
-  options = {
-    // Android only. Max images to be selected, defaults to 15. If this is set to 1, upon
-    // selection of a single image, the plugin will return it.
-    maximumImagesCount: 1,
+  foto: string;
+  nomeFoto: string;
+  
 
-    // max width and height to allow the images to be.  Will keep aspect
-    // ratio no matter what.  So if both are 800, the returned image
-    // will be at most 800 pixels wide and 800 pixels tall.  If the width is
-    // 800 and height 0 the image will be 800 pixels wide if the source
-    // is at least that wide.
-    width: 800,
-    height: 600,
-
-    // quality of resized image, defaults to 100
-    quality: 100,
-
-    // output type, defaults to FILE_URIs.
-    // available options are 
-    // window.imagePicker.OutputType.FILE_URI (0) or 
-    // window.imagePicker.OutputType.BASE64_STRING (1)
-    outputType: 1
-  };
-
-  constructor(private imagePicker: ImagePicker, private cadastrarUsuarioService: CadastrarUsuarioService, private navCtrl: NavController) { }
+  constructor(private camera: Camera, 
+    private file: File, 
+    private cadastrarUsuarioService: CadastrarUsuarioService, 
+    private navCtrl: NavController, 
+    public actionSheetController: ActionSheetController,
+    private fotoUploadService: FotoUploadService) { }
 
   ngOnInit() {
   }
 
-  selecionarFoto() {
-    this.imagePicker.getPictures(this.options).then((results) => {
-      for (var i = 0; i < results.length; i++) {
-        console.log('Image URI: ' + results[i]);
+  async selectImage() {
+    const actionSheet = await this.actionSheetController.create({
+      header: "Para a foto de perfil, vou...",
+      buttons: [{
+        text: 'Escolher uma existente',
+        handler: () => {
+          this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+        }
+      },
+      {
+        text: 'Usar a câmera',
+        handler: () => {
+          this.pickImage(this.camera.PictureSourceType.CAMERA);
+        }
+      },
+      {
+        text: 'Não quero mais colocar foto',
+        role: 'cancel'
       }
-    }, (err) => { });
+      ]
+    });
+    await actionSheet.present();
+  }
+
+  pickImage(sourceType) {
+    const options: CameraOptions = {
+      quality: 50,
+      sourceType: sourceType,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      // let base64Image = 'data:image/jpeg;base64,' + imageData;
+      this.foto = 'data:image/jpeg;base64,' + imageData;
+      this.fotoUploadService.uploadFoto(imageData).subscribe((data: any) => {
+        data = JSON.parse(data._body);
+        if (data.sucesso) {
+          this.nomeFoto = data.nomeFoto;
+        }
+        else {
+          alert(data.mensagem);
+        }
+      }, err => {
+        alert('nao consegui mandar a foto =´(');
+      });
+    }, (err) => {
+      // Handle error
+    });
   }
 
   cadastrar(nome, cpf, dataNascimento, telefone, email, senha, rua, numero, complemento, bairro, cidade, estado, cep) {
@@ -56,6 +89,7 @@ export class CadastroUsuarioPage implements OnInit {
     usuario.Telefone = telefone.value;
     usuario.Email = email.value;
     usuario.Senha = senha.value;
+    usuario.Foto = this.nomeFoto;
     usuario.Rua = rua.value;
     usuario.Numero = numero.value;
     usuario.Complemento = complemento.value;
@@ -68,12 +102,11 @@ export class CadastroUsuarioPage implements OnInit {
       data = JSON.parse(data._body);
       if (data.sucesso) {
         alert('cadastrad@ com sucesso =D');
+        this.navCtrl.navigateForward('tabs/login');
       }
       else {
         alert(data.mensagem);
       }
-      this.navCtrl.navigateRoot('intro');
-
     }, err => {
       alert('erro ao cadastrar =´(');
     });

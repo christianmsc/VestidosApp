@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>Cadastrar</ion-title>
   </ion-toolbar>
@@ -13,7 +13,7 @@
   <ion-card>
 
     <ion-card-header>
-      <ion-card-subtitle>Dados Pessoais</ion-card-subtitle>
+      <ion-card-subtitle><ion-icon name="person"></ion-icon> Dados Pessoais</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
@@ -59,9 +59,17 @@
         </ion-item>
       </div>
 
-      <div class="ion-padding ion-text-center">
-        Selecionar Foto... 
-        <ion-button (click)="selecionarFoto()"> 
+      <div *ngIf="!foto" class="ion-padding ion-text-center">
+        Selecionar foto... 
+        <ion-button (click)="selectImage()"> 
+          <ion-icon name="camera"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div *ngIf="foto" class="ion-padding ion-text-center">
+        <img [src]="foto" class="foto">
+        Mudar foto... 
+        <ion-button (click)="selectImage()"> 
           <ion-icon name="camera"></ion-icon>
         </ion-button>
       </div>
@@ -73,7 +81,7 @@
   <ion-card>
 
     <ion-card-header>
-      <ion-card-subtitle>Endereço</ion-card-subtitle>
+      <ion-card-subtitle><ion-icon name="home"></ion-icon> Endereço</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>

@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
       data = JSON.parse(data._body);
 
       if (data.sucesso) {
-        this.authService.login();
+        this.authService.login(data.id);
         this.navCtrl.navigateRoot('');
       }
       else {
