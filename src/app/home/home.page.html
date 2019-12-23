@@ -10,14 +10,62 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
-      <img src="/assets/vestidos.jpg" alt="" />
-      <ion-card-header>
-        <ion-card-subtitle>Olá, Fulan@!</ion-card-subtitle>
-        <ion-card-title>Bem-Vind@, fique à vontade!</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Confira nosso catálogo de vestidos e, caso escolha um, conte com a gente para levá-lo até você!</p>
-      </ion-card-content>
-    </ion-card>
+  <ion-card class="welcome-card">
+    <img src="/assets/vestidos.jpg" alt="" />
+    <ion-card-header>
+      <ion-card-subtitle *ngIf="logado">Olá, {{nomeUsuario}}!</ion-card-subtitle>
+      <ion-card-title>Bem-Vind@, fique à vontade!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Confira nosso catálogo de vestidos e, caso escolha um, conte com a gente para levá-lo até você!</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+    <p>Adicionados Recentemente</p>
+  </ion-item>
+  
+  <ion-slides [options]="slideOpts">
+    <ion-slide>
+      <ion-card class="carousel-card">
+        <img src="http://ameiseuvestido.gear.host/fotos/8.jpg" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>Vestido Azul</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="carousel-card">
+        <img src="http://ameiseuvestido.gear.host/fotos/9.jpg" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>Vestido Branco</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="carousel-card">
+        <img src="http://ameiseuvestido.gear.host/fotos/1.jpg" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>Vestido Vermelho</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="carousel-card">
+        <img src="http://ameiseuvestido.gear.host/fotos/13.jpeg" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>Vestido Preto Preto Preto Preto Preto Preto</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="carousel-card">
+        <img src="http://ameiseuvestido.gear.host/fotos/6.jpg" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>Vestido Verde</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
 </ion-content>

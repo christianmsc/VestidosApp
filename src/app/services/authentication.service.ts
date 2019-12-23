@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject } from 'rxjs';
 
-const USUARIO_ID = 'auth-token';
+const USUARIO_ID = 'usuario-id';
+const USUARIO_NOME = 'usuario-nome';
+const USUARIO_EMAIL = 'usuario-email';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +43,14 @@ export class AuthenticationService {
 
   getIdUsuario() {
     return localStorage.getItem(USUARIO_ID);
+  }
+
+  getNomeUsuario() {
+    return localStorage.getItem(USUARIO_NOME);
+  }
+
+  getEmailUsuario() {
+    return localStorage.getItem(USUARIO_EMAIL);
   }
 
 }
